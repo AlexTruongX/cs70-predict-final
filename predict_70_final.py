@@ -44,7 +44,7 @@ def grade_to_z(grade):
     grades_to_p = {'A+' : [0.95, 0.99], 'A' : [0.78, 0.95], 'A-' : [0.66, 0.78],
                 'B+' : [0.43, 0.66], 'B' : [0.26, 0.43], 'B-' : [0.16, 0.26],
                 'C+':[0.11, 0.16], 'C' : [0.07, 0.11], 'C-' : [0.04, 0.07],
-                'F' : [0.00, 0.04]}
+                'F' : [0.01, 0.04]}
 
     if grade not in grades_to_p:
         print(f"You are actually trolling. {grade} is not a possible grade.")
