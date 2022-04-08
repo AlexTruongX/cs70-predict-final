@@ -10,7 +10,6 @@ def mt1_zscore(raw_score):
     # Updated 4/5/22
     mean = 132.72
     std = 39.01
-
     return (raw_score - mean)/std
 
 def avg_std(score1, score2):
@@ -55,16 +54,31 @@ def grade_to_z(grade):
         upper_z = round(st.norm.ppf(percentile[1]), 2)
         return [lower_z, upper_z]
 
+def predict_final_std_all(mt1_raw):
+    grades = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'F']
+    mt1_std = mt1_zscore(mt1_raw)
+    print(f'Midterm 1 std: {round(mt1_std, 2)}')
+    print(f'Here are all the final std ranges you need to hit to reach a certain grade:')
+    for grade in grades:
+        grade_range = grade_to_z(grade)
+        lower = predict_final_std_exact(grade_range[0], mt1_raw, should_print=False, show_all=True)
+        upper = predict_final_std_exact(grade_range[1], mt1_raw, should_print=False, show_all=True)
+        if type(lower) is str or type(upper) is str:
+            print(f"{grade}: Probabilistically Impossible")
+        else: 
+            print(f'{grade}: ({lower},{upper})')
+            
+
 def predict_final_std_range(grade, mt1_raw):
     grade_range = grade_to_z(grade)
     mt1_std = mt1_zscore(mt1_raw)
     lower = predict_final_std_exact(grade_range[0], mt1_raw, should_print=False)
     upper = predict_final_std_exact(grade_range[1], mt1_raw, should_print=False)
-    print(f'Midterm 1 std: {mt1_std}')
+    print(f'Midterm 1 std: {round(mt1_std, 2)}')
     print(f'To get an {grade}, you need to get a final std between ({lower},{upper}) based on past data.')
 
 
-def predict_final_std_exact(desired_std, mt1_raw, should_print=True):
+def predict_final_std_exact(desired_std, mt1_raw, should_print=True, show_all=False):
     mt1_std = mt1_zscore(mt1_raw)
 
     for final_std in np.arange(-3, 3, 0.001):
@@ -78,21 +92,25 @@ def predict_final_std_exact(desired_std, mt1_raw, should_print=True):
 
             if should_print:
                 print(f'Desired std for a grade of an {overall_grade}\033[0m: {desired_std}')
-                print(f'Midterm 1 std: {mt1_std}')
-                print(f'You need a final std of {round(final_std, 2)} to get a {overall_grade} \033[0min the class.')
+                print(f'Midterm 1 std: ~{round(mt1_std, 2)}')
+                print(f'You need a final std of {round(final_std, 2)} to get an {overall_grade} \033[0min the class.')
                 return
             else:
                 return round(final_std, 2)
 
-    print("Probabilistically Impossible")
-    exit() 
+    if show_all:
+        return "impossible"
+    else:
+        print("Probabilistically Impossible")
+        exit() 
 
 def predict():
     print('\u2500' * 10)
     print("Option A: I want to end the class with <desired grade>, what final std range do I need to score within?")
     print("Option B: I want to end the class with <exact desired std>, what exact final std do I need?")
+    print("Option C: I want a final std range for all possible grades if I scored <raw score> on Midterm 1")
     print(' ' * 10)
-    choice = input('Which option sounds like you? A or B? ').strip().upper()
+    choice = input('Which option sounds like you? A, B, or C? ').strip().upper()
 
     if choice == 'A':
         mt1_raw = input('Enter your midterm 1 raw score: ')
@@ -104,6 +122,10 @@ def predict():
         overall_desired_std = input('Enter the standard deviation you want to end the class with: ')
         print()
         predict_final_std_exact(float(overall_desired_std), float(mt1_raw))
+    elif choice == 'C':
+        mt1_raw = input('Enter your midterm 1 raw score: ')
+        print()
+        predict_final_std_all(float(mt1_raw))
 
     print('\u2500' * 10)
 
