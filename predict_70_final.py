@@ -67,7 +67,7 @@ def predict_final_std_range(grade, mt1_raw):
 def predict_final_std_exact(desired_std, mt1_raw, should_print=True):
     mt1_std = mt1_zscore(mt1_raw)
 
-    for final_std in np.arange(-3, 3, 0.0001):
+    for final_std in np.arange(-3, 3, 0.001):
         clobber = avg_std(mt1_std, final_std)
         delta = 0.01
         overall_std = round(avg_std(max(mt1_std, clobber), max(final_std, clobber)), 2)
