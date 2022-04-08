@@ -35,3 +35,11 @@ You have two options:
 * Option B: You want to get a very specific <desired overall std>. This option tells you exactly what std you need on the final to get that. 
     * This will ask for your raw midterm score and the grade that you want. 
     * Output: exact std for the final to get <desired std>
+
+## Optional CLI Functionality:
+You can additionally run
+```
+python3 predict.py score [-g desired grade] [-s desired std]
+```
+
+With either the `-g` or `-s` argument to see your desired grade or desired standard deviation.
