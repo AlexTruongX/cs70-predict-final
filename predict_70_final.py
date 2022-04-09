@@ -63,7 +63,7 @@ def predict_final_std_all(mt1_raw):
         grade_range = grade_to_z(grade)
         lower = predict_final_std_exact(grade_range[0], mt1_raw, should_print=False, show_all=True)
         upper = predict_final_std_exact(grade_range[1], mt1_raw, should_print=False, show_all=True)
-        if type(upper) is str and type(lower) is str:
+        if type(lower) is str and type(upper) is str:
             print(f"{grade}: Probabilistically Impossible")
         else: 
             print(f'{grade}: ({lower},{upper})')
