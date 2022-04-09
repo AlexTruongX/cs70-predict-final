@@ -87,7 +87,7 @@ def predict_final_std_exact(desired_std, mt1_raw, should_print=True, show_all=Fa
     for final_std in np.arange(-3, 3, 0.001):
         clobber = avg_std(mt1_std, final_std)
         delta = 0.01
-        overall_std = round(avg_std(max(mt1_std, clobber)*.75, max(final_std, clobber)), 2)
+        overall_std = round(avg_std(max(mt1_std, clobber)*.75, max(final_std, clobber)), 3)
 
         if abs(overall_std - desired_std) <= delta:
             overall_p = st.norm.cdf(overall_std) # converts to percentile in normalized distribution
