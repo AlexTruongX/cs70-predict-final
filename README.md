@@ -28,13 +28,13 @@ python3 predict_70_final.py
 
 ## How it works:
 You have two options:
-* Option A: You want to get <desired grade> and want to find out the final std range that you need score within to get <desired grade>.
-    * This will ask for your raw midterm score and the grade that you want. 
-    * Output: [lower bound std, upper bound std] for <desired grade>
+* Option A: You want to get an "[desired grade] and want to find out the final std range that you need score within to get [desired grade].
+    * Output: [lower bound std, upper bound std] for [desired grade]
 
-* Option B: You want to get a very specific <desired overall std>. This option tells you exactly what std you need on the final to get that. 
-    * This will ask for your raw midterm score and the grade that you want. 
-    * Output: exact std for the final to get <desired std>
+* Option B: You want to get a very specific [desired overall std]. This option tells you exactly what std you need on the final to get that. 
+    * Output: exact std for the final to get [desired std]
+
+* Option C: All possible grade ranges. If I scored [__] on the midterm, what do I need for an A, A-, B+, ...
 
 ## Optional CLI Functionality:
 You can additionally run
