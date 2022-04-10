@@ -63,10 +63,13 @@ def predict_final_std_all(mt1_raw):
         grade_range = grade_to_z(grade)
         lower = predict_final_std_exact(grade_range[0], mt1_raw, should_print=False, show_all=True)
         upper = predict_final_std_exact(grade_range[1], mt1_raw, should_print=False, show_all=True)
-        if type(lower) is str or type(upper) is str:
+        low_str = type(lower) is str
+        up_str = type(upper) is str
+        
+        if low_str and up_str:
             print(f"{grade}: Probabilistically Impossible")
         else: 
-            print(f'{grade}: ({lower},{upper})')
+            print(f'{grade}: ({"Cant reach lower bound" if low_str else lower},{"Cant reach upper bound" if up_str else upper})')
             
 
 def predict_final_std_range(grade, mt1_raw):
@@ -84,7 +87,7 @@ def predict_final_std_exact(desired_std, mt1_raw, should_print=True, show_all=Fa
     for final_std in np.arange(-3, 3, 0.001):
         clobber = avg_std(mt1_std, final_std)
         delta = 0.01
-        overall_std = round(avg_std(max(mt1_std, clobber), max(final_std, clobber)), 2)
+        overall_std = round(avg_std(max(mt1_std, clobber)*.75, max(final_std, clobber)), 3)
 
         if abs(overall_std - desired_std) <= delta:
             overall_p = st.norm.cdf(overall_std) # converts to percentile in normalized distribution
