@@ -28,7 +28,7 @@ python3 predict_70_final.py
 
 ## How it works:
 You have two options:
-* Option A: You want to get an "[desired grade] and want to find out the final std range that you need score within to get [desired grade].
+* Option A: You want to get an "[desired grade]" and want to find out the final std range that you need score within to get [desired grade].
     * Output: [lower bound std, upper bound std] for [desired grade]
 
 * Option B: You want to get a very specific [desired overall std]. This option tells you exactly what std you need on the final to get that. 
