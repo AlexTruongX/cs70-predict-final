@@ -25,6 +25,11 @@ def grade(percentile):
     else:
         return 'F'
 
+def mt1_zscore(raw_score):
+    # Updated 4/5/22
+    mean = 132.72
+    std = 39.01
+    return (raw_score - mean)/std
 
 def avg_std(score1, score2):
     return (score1 + score2)/2
@@ -65,4 +70,4 @@ def predict_final_std_all(z_score_MT):
         else: 
             print(f'{grade}: ({"Probabilistically Impossible" if not lower else lower},{"Probabilistically Impossible" if not upper else upper})')
 
-predict_final_std_all(float(input("Enter MT Z-Score: ")))
+predict_final_std_all(mt1_zscore(float(input("Enter midterm 1 raw score: "))))
