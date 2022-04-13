@@ -69,7 +69,7 @@ def predict_final_std_all(mt1_raw):
         if low_str and up_str:
             print(f"{grade}: Probabilistically Impossible")
         else: 
-            print(f'{grade}: ({"Cant reach lower bound" if low_str else lower},{"Cant reach upper bound" if up_str else upper})')
+            print(f'{grade}: ({"-3.0 or lower" if low_str else lower},{"3.0 or higher" if up_str else upper})')
             
 
 def predict_final_std_range(grade, mt1_raw):

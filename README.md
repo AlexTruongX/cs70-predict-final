@@ -45,7 +45,7 @@ You have two options:
 ## Optional CLI Functionality:
 You can additionally run
 ```
-python3 predict.py score [-g desired grade] [-s desired std]
+python3 predict.py score [-g desired grade] [-s desired std] [-a] [-c]
 ```
 
-With either the `-g` or `-s` argument to see your desired grade or desired standard deviation.
+With either the `-g` or `-s` argument to see your desired grade or desired standard deviation, or the `-a` argument to show all grades, and the `-c` argument to use the correlation based grade estimator. Note that it is highly recommended to use `-ac` for the correlation based CLI input; use of `-g` and `-s` are experimental and may be inaccurate. Please run `python3 predict.py -h` for more information.
