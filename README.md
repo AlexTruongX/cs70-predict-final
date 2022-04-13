@@ -1,9 +1,9 @@
 # CS70 Grade "Calculator"
 This program predicts the grade you need to score on the final when inputted your midterm score. 
 
-Percentiles may vary slightly from semester to semester, so you ideally want to score a little bit above the lower bound to be safe. Ideally, the median between the lower and upper bound.
+Percentiles may vary slightly from semester to semester, so you want to score a little bit above the lower bound to be safe. Ideally, try to hit the median between the lower and upper bound.
 
-*Note: I'm not responsible for you failing to declare or if you cry about not getting the grade that the calculator said you would get.*
+*Disclaimer: I'm not responsible if you fail to declare or if you cry about not getting the grade that the calculator said you would get. I made this for myself out of pure anxiety to give myself some semblance of certainty.*
 
 ## Requirements
 1. Python 3
@@ -26,7 +26,7 @@ pip3 install numpy
 python3 predict_70_final.py
 ```
 
-** Rudimentary predictor factoring in Corr(MT, Final) **
+**Rudimentary predictor factoring in Corr(MT, Final)**
 ```
 python3 predict_70_corr.py
 ```
