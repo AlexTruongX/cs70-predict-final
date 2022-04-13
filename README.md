@@ -29,7 +29,7 @@ python3 predict_70_final.py
 
 **Rudimentary predictor factoring in Corr(MT, Final)**
 ```
-python3 predict_70_corr.py
+python3 predict_with_corr.py
 ```
 
 ## How it works:
