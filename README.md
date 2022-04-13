@@ -1,7 +1,7 @@
 # CS70 Grade "Calculator"
 This program predicts the grade you need to score on the final when inputted your midterm score. 
 
-Percentiles may vary slightly from semester to semester, so you ideally want to score a little bit above the lower bound to be safe.
+Percentiles may vary slightly from semester to semester, so you ideally want to score a little bit above the lower bound to be safe. Ideally, the median between the lower and upper bound.
 
 *Note: I'm not responsible for you failing to declare or if you cry about not getting the grade that the calculator said you would get.*
 
@@ -21,20 +21,26 @@ pip3 install numpy
 
 ## Running the Program:
 
-`cd` into the same folder as the .py then run the following: 
+`cd` into the same folder as the .py file then run the following: 
 ```
 python3 predict_70_final.py
+```
+
+** Rudimentary predictor factoring in Corr(MT, Final) **
+```
+python3 predict_70_corr.py
 ```
 
 ## How it works:
 You have two options:
 * Option A: You want to get an "[desired grade]" and want to find out the final std range that you need score within to get [desired grade].
-    * Output: [lower bound std, upper bound std] for [desired grade]
+    * Output: (lower bound std, upper bound std) for [desired grade]
 
 * Option B: You want to get a very specific [desired overall std]. This option tells you exactly what std you need on the final to get that. 
     * Output: exact std for the final to get [desired std]
 
 * Option C: All possible grade ranges. If I scored [__] on the midterm, what do I need for an A, A-, B+, ...
+    * Output: [grade]: (lower bound std, upper bound std)
 
 ## Optional CLI Functionality:
 You can additionally run
