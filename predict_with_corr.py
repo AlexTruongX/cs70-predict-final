@@ -1,4 +1,5 @@
 from statistics import NormalDist
+import scipy.stats as st
 import numpy as np
 
 # From https://www.reddit.com/r/berkeley/comments/kbvxd2/calculating_your_grade_in_cs70_and_other_curved/
@@ -25,6 +26,23 @@ def grade(percentile):
     else:
         return 'F'
 
+def grade_to_z(grade):
+    grade = grade.strip().upper()
+    # Percentiles pulled from Berkeley Time (historically accurate)
+    grades_to_p = {'A+' : [0.95, 0.99], 'A' : [0.78, 0.95], 'A-' : [0.66, 0.78],
+                'B+' : [0.43, 0.66], 'B' : [0.26, 0.43], 'B-' : [0.16, 0.26],
+                'C+':[0.11, 0.16], 'C' : [0.07, 0.11], 'C-' : [0.04, 0.07],
+                'F' : [0.01, 0.04]}
+
+    if grade not in grades_to_p:
+        print(f"You are actually trolling. {grade} is not a possible grade.")
+        exit()
+    else:
+        percentile = grades_to_p[grade]
+        lower_z = round(st.norm.ppf(percentile[0]), 2) # norm.ppf is inverse of norm.cdf
+        upper_z = round(st.norm.ppf(percentile[1]), 2)
+        return [lower_z, upper_z]
+
 def mt1_zscore(raw_score):
     # Updated 4/5/22
     mean = 132.72
@@ -42,6 +60,13 @@ def grade_to_percentile(grade):
                 'C+':[0.11, 0.16], 'C' : [0.07, 0.11], 'C-' : [0.04, 0.07],
                 'F' : [0.01, 0.04]}
     return grades_to_p[grade]
+
+def predict_final_std_range(grade, z_score_MT):
+    grade_range = grade_to_z(grade)
+    lower = predict_final_std_exact(grade_range[0], z_score_MT)
+    upper = predict_final_std_exact(grade_range[1], z_score_MT)
+    print(f'Midterm 1 std: {round(z_score_MT, 2)}')
+    print(f'To get an {grade}, you need to get a final std between ({lower},{upper}) based on past data.')
 
 def predict_final_std_exact(desired_percentile, z_score_MT):
     for z_score_F in np.arange(-3, 3, 0.001):
@@ -70,4 +95,6 @@ def predict_final_std_all(z_score_MT):
         else: 
             print(f'{grade}: ({"Probabilistically Impossible" if not lower else lower},{"Probabilistically Impossible" if not upper else upper})')
 
-predict_final_std_all(mt1_zscore(float(input("Enter midterm 1 raw score: "))))
+if __name__ == "__main__":
+    # calling the main function
+    predict_final_std_all(mt1_zscore(float(input("Enter midterm 1 raw score: "))))
