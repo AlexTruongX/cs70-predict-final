@@ -35,6 +35,7 @@ python3 predict_with_corr.py
 ## How it works:
 The predictor factors in the two-way 50%-clobbering policy and assumes everyone has 100% in all other categories besides exams, which according to course staff, buckets HW-Option students without homework i.e very similar to No-HW Option students. 
 * For HW-Option students: the reason we can make this assumption is because this "extreme case" where everyone gets full points on HW "is actually the norm for almost all students getting above a B-.  With the new 73% is enough policy for homework, this is even more true; 90% of the students whose final score was above the B range received essentially full points on the homework" (according to TA). It's also quite difficult to account for actual deviations but the difference is nearly negligible. 
+* Factors excluded: deviations within HW bins (i.e non-100%) and class-wide z-score shifting after clobbering.
 
 You have two options:
 * Option A: You want to get an "[desired grade]" and want to find out the final std range that you need score within to get [desired grade].
