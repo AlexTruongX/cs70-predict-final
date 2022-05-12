@@ -1,5 +1,5 @@
 # CS70 Grade "Calculator"
-This program gives an statistical approximation for the standard deviation you need to score on final if you want a specific grade given your midterm score. 
+This program gives an statistical approximation for the standard deviation you need to score on the final if you want a specific grade given your midterm score. 
 
 Percentiles may vary slightly from semester to semester, so you want to score a little bit above the lower bound to be safe. Ideally, try to hit the median between the lower and upper bound.
 
@@ -28,13 +28,14 @@ If you're still running into issues after installing the modules, double check t
 ## Running the Program:
 
 `cd` into the same folder as the .py file then run the following: 
+*Predictor factoring in Corr(MT, Final) & Weights of MT & Final*
 ```
-python3 predict_70_final.py
+python3 predict_70_corr.py
 ```
 
-**Predictor factoring in Corr(MT, Final)**
+*Unweighted Predictor*
 ```
-python3 predict_with_corr.py
+python3 predict_70_final.py
 ```
 
 ## How it works:
