@@ -28,6 +28,12 @@ If you're still running into issues after installing the modules, double check t
 ## Running the Program:
 
 `cd` into the same folder as the .py file then run the following: 
+
+*Calculate your expected letter grade using your Spring 2022 midterm and final score:*
+```
+python3 calc_overall_grade.py
+```
+
 *Predictor factoring in Corr(MT, Final) & Weights of MT & Final*
 ```
 python3 predict_70_corr.py
