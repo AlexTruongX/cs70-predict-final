@@ -33,9 +33,9 @@ def mt1_zscore(raw_score):
     return (raw_score - mean)/std
 
 def final_zscore(raw_score):
-    # Updated 5/15/22
-    mean = 138.29
-    std = 49.31
+    # Updated 5/16/22
+    mean = 139.56
+    std = 51.47
     return (raw_score - mean)/std
 
 def avg_std(score1, score2):
