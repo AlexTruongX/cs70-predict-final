@@ -44,6 +44,10 @@ python3 predict_70_corr.py
 python3 predict_70_final.py
 ```
 
+### Which should I run?
+* `calc_overall_grade.py` calculates your overall weighted z-score **GIVEN your midterm and final raw scores** and maps it to a grade bin using Fall 2021's data.
+* `predict_with_corr.py` calculates the z-score you need to hit on the final to reach a certain letter grade **GIVEN just your midterm score**. Additionally, you can also run the unweighted predictor `predict_70_final.py`.
+
 ## How it works:
 The predictor factors in the two-way 50%-clobbering policy and assumes everyone has 100% in all other categories besides exams, which according to course staff, buckets HW-Option students without homework i.e very similar to No-HW Option students. 
 * For HW-Option students: the reason we can make this assumption is because this "extreme case" where everyone gets full points on HW "is actually the norm for almost all students getting above a B-.  With the new 73% is enough policy for homework, this is even more true; 90% of the students whose final score was above the B range received essentially full points on the homework" (according to TA). It's also quite difficult to account for actual deviations but the difference is nearly negligible. 
