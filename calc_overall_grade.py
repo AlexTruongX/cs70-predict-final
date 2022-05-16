@@ -51,15 +51,15 @@ def percentile_to_grade(percentile):
     count = 0
     for grade in grades_to_p:
         interval = grades_to_p[grade]
-        if percentile > interval[0]:
+        if interval[0] == percentile or interval[1] == percentile:
+            if count > 0:
+                print(f"{grade}.")
+                return
+            print(f"You're on the border of a grade bin between {grade} and ", end="")
+            count += 1
+        elif percentile > interval[0]:
             print(f"Expected Grade: {grade}")
             return
-        elif interval[0] == percentile or interval[1] == percentile:
-            if count > 0:
-                print("{grade}.")
-                return
-            print(f"You're on the border of a grade bin between {grade} and ")
-            count += 1
 
 def calc_overall_sd(mt_raw, final_raw):
     midterm_z = mt1_zscore(mt_raw)
