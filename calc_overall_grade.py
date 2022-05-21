@@ -98,7 +98,7 @@ def calc_overall_sd(mt_raw, final_raw):
             sim_final_raw += 1
         
         pt_diff = abs(sim_final_raw - final_raw - 1)
-        print(f"Expected Grade: {curr_grade}. To get a {next_grade}, you needed to score {pt_diff} more points.")
+        print(f"Your expected grade is a {curr_grade}. To get an {next_grade}, you needed to score {int(pt_diff)} more points on the final.")
         
 
     # Calculate z-scores (and relative changes)
