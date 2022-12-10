@@ -29,24 +29,21 @@ If you're still running into issues after installing the modules, double check t
 
 `cd` into the same folder as the .py file then run the following: 
 
+Note: If you're using this in a semester other than Spring 2022, you need to update the exam stats in each file with the relevant ones from your current semester
+
+*Predictor for what you need to score on the final, which factors in Corr(MT, Final) & Weights of MT & Final*
+```
+python3 predict_70_corr.py 
+```
+
 *Calculate your expected letter grade using your Spring 2022 midterm and final score:*
 ```
-python3 calc_overall_grade.py
+python3 calc_overall_grade.py 
 ```
 
-*Predictor factoring in Corr(MT, Final) & Weights of MT & Final*
-```
-python3 predict_70_corr.py
-```
-
-*Unweighted Predictor*
-```
-python3 predict_70_final.py
-```
-
-### Which should I run?
+### Which version should I run?
 * `calc_overall_grade.py` calculates your overall weighted z-score **GIVEN your midterm and final raw scores** and maps it to a grade bin using Fall 2021's data.
-* `predict_with_corr.py` calculates the z-score you need to hit on the final to reach a certain letter grade **GIVEN just your midterm score**. Additionally, you can also run the unweighted predictor `predict_70_final.py`.
+* `predict_with_corr.py` calculates the z-score you need to hit on the final to reach a certain letter grade **GIVEN just your midterm score**. 
 
 ## How it works:
 The predictor factors in the two-way 50%-clobbering policy and assumes everyone has 100% in all other categories besides exams, which according to course staff, buckets HW-Option students without homework i.e very similar to No-HW Option students. 
